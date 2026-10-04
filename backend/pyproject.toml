@@ -1,0 +1,42 @@
+[project]
+name = "chidanoo-backend"
+version = "0.1.0"
+description = "CHIDANOO AI interior redesign backend (FastAPI)"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.4",
+    "python-dotenv>=1.0",
+    "torch>=2.2",
+    "diffusers>=0.30",
+    "transformers>=4.42",
+    "accelerate>=0.33",
+    "safetensors>=0.4",
+    "controlnet-aux>=0.0.9",
+    "opencv-python-headless>=4.9",
+    "numpy>=1.26",
+    "Pillow>=10.3",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+ui = [
+    "gradio>=5.0,<7",
+]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.27",
+]
+
+[tool.pytest.ini_options]
+addopts = "--basetemp=.pytest_tmp"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]

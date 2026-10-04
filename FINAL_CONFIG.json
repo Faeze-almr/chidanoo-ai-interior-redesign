@@ -1,0 +1,84 @@
+{
+  "phase": "final",
+  "source_of_truth": "Runtime defaults are defined in backend/app/core/final_config.py; this JSON mirrors the frozen delivery configuration. Historical experiment provenance is documented in docs/EVALUATION_SUMMARY.md.",
+  "full_redesign": {
+    "seed_default": 42,
+    "steps": 30,
+    "guidance_scale": 7.5,
+    "depth_scale": 0.5,
+    "canny_scale": 0.2,
+    "prompt_policy": "architecture_prefix + optional_style + optional_user_request + quality_suffix",
+    "pixel_level_window_restoration": false
+  },
+  "targeted_inpaint": {
+    "seed_default": 42,
+    "steps": 30,
+    "guidance_scale": 7.5,
+    "depth_scale": 0.4,
+    "canny_scale": 0.1,
+    "strength": 1.0,
+    "prompt_policy": "masked_target_only + optional_style + optional_user_request + unmasked_architecture_preservation",
+    "exact_outside_mask_restoration": true
+  },
+  "reference_redesign": {
+    "seed_default": 42,
+    "steps": 30,
+    "guidance_scale": 7.5,
+    "depth_scale": 0.5,
+    "canny_scale": 0.2,
+    "reference_scale": 0.6,
+    "adapter": "h94/IP-Adapter",
+    "adapter_weight": "sdxl_models/ip-adapter_sdxl_vit-h.safetensors",
+    "adapter_image_encoder": "models/image_encoder",
+    "adapter_projection_dim": 1024,
+    "lifecycle": "ephemeral_per_operation_with_cpu_offload_and_full_cleanup"
+  },
+  "resize": {
+    "target_short_side": 1024,
+    "multiple": 8,
+    "image_resampling": "LANCZOS",
+    "binary_mask_resampling": "NEAREST"
+  },
+  "mask": {
+    "mode": "L",
+    "threshold": 128,
+    "white_means": "editable",
+    "black_means": "protected",
+    "minimum_coverage_fraction": 0.001,
+    "aspect_ratio_tolerance_fraction": 0.02,
+    "default_restoration": "exact_B1"
+  },
+  "models": {
+    "base": "stabilityai/stable-diffusion-xl-base-1.0",
+    "depth_controlnet": "diffusers/controlnet-depth-sdxl-1.0",
+    "canny_controlnet": "diffusers/controlnet-canny-sdxl-1.0",
+    "vae": "madebyollin/sdxl-vae-fp16-fix",
+    "depth_estimator": "lllyasviel/Annotators",
+    "depth_estimator_class": "MidasDetector",
+    "scheduler": "DPMSolverMultistepScheduler",
+    "use_karras_sigmas": true
+  },
+  "runtime": {
+    "generation_requires_cuda": true,
+    "cuda_dtype": "float16",
+    "model_loading_excluded_from_runtime_sec": true,
+    "peak_vram_metric": "torch.cuda.max_memory_allocated"
+  },
+  "integrated_software_features": {
+    "gradio_ui": "optional ui dependency",
+    "local_history": "folder_json_with_zip_export",
+    "history_database": false,
+    "styles_added": [
+      "japandi",
+      "luxury"
+    ]
+  },
+  "disabled_features": [
+    "captioning",
+    "full_benchmark",
+    "RealVisXL",
+    "SDXL-Lightning",
+    "Depth Anything",
+    "MLSD"
+  ]
+}

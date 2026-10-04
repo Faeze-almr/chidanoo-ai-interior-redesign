@@ -1,0 +1,48 @@
+# --- Python / backend ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.pytest_tmp/
+.mypy_cache/
+.ruff_cache/
+*.db
+*.sqlite3
+
+# Backend runtime data (generated at run time, not source)
+backend/storage/*
+!backend/storage/.gitkeep
+
+# --- Node / frontend ---
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+*.tsbuildinfo
+
+# --- Environment files (never commit secrets/local config) ---
+.env
+.env.*
+!.env.example
+!*/.env.example
+
+# --- Generated/evaluation artifacts at repo root ---
+outputs/*
+!outputs/.gitkeep
+
+# Original capstone style thumbnails did not include redistribution metadata.
+# The public UI uses CSS-generated abstract previews instead.
+frontend/public/styles/*.jpg
+
+# --- Editor / OS ---
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/

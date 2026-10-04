@@ -1,0 +1,16 @@
+.gradio-container {
+  max-width: 1250px !important;
+  margin: auto !important;
+}
+
+.hero {
+  padding: 18px 22px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  margin-bottom: 4px;
+}

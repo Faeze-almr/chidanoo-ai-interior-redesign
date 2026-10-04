@@ -1,0 +1,17 @@
+# Torch is intentionally omitted. Use Kaggle's CUDA-enabled PyTorch build.
+diffusers==0.37.1
+transformers==5.0.0
+accelerate==1.13.0
+controlnet-aux==0.0.10
+opencv-python-headless==4.13.0.92
+safetensors>=0.4
+huggingface-hub>=0.34
+numpy>=1.26
+Pillow>=10.3
+gradio>=5.0,<7
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.4
+python-dotenv>=1.0
+python-multipart>=0.0.9

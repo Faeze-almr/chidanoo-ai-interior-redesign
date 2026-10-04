@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-bg text-text-main font-sans antialiased;
+  }
+  
+  html[dir="rtl"] {
+    @apply font-fa;
+  }
+
+  /* Focus rings for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg;
+  }
+
+  /* Custom scrollbar for webkit */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-soft;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-strong rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-muted;
+  }
+}
+
+@layer utilities {
+  .tactile-btn {
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+  }
+  
+  .tactile-btn-primary {
+    @apply bg-primary text-white;
+    box-shadow: 0 5px 0 #6D28D9, 0 10px 22px rgba(109, 40, 217, 0.18);
+  }
+  
+  .tactile-btn-primary:hover {
+    transform: translateY(-1px);
+    @apply bg-primary-hover;
+  }
+  
+  .tactile-btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #6D28D9, 0 5px 12px rgba(109, 40, 217, 0.16);
+    @apply bg-primary-active;
+  }
+  
+  .tactile-btn-primary:disabled {
+    transform: translateY(0);
+    box-shadow: none;
+    @apply bg-border-strong text-text-muted cursor-not-allowed;
+  }
+}
